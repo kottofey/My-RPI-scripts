@@ -1,0 +1,2 @@
+https://webdav.yandex.ru /media/yandexdisk davfs _netdev,auto,rw,gid=pi,uid=pi,noexec,user,async 0 0
+UUID=EED42BBCD42B8645 /mnt/torrentdisk ntfs nofail,uid=pi,gid=pi 0 0
