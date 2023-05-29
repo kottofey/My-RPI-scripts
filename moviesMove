@@ -1,0 +1,25 @@
+#!/bin/bash
+
+### https://www.cyberciti.biz/tips/handling-filenames-with-spaces-in-bash.html
+
+OLDIFS=$IFS
+IFS=$'\n'
+
+plexLibPath="/mnt/torrentdisk/Movies"
+downloadPath="/mnt/torrentdisk/Downloads/Movies"
+extList=(mov m4v mkv avi mpg mpeg)
+
+files=( $(ls -1 $downloadPath) )
+
+IFS=$OLDIFS
+
+
+size=${#extList[@]}
+
+for file in "${files[@]}"; do
+	for ((j=0; j<size; j++)); do
+		if [[ "$file" == *.${extList[j]} ]]; then
+			/bin/mv "$downloadPath/$file" "$plexLibPath";
+		fi
+	done
+done
