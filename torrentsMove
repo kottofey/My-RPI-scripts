@@ -1,0 +1,29 @@
+#!/bin/bash
+
+### https://www.cyberciti.biz/tips/handling-filenames-with-spaces-in-bash.html
+
+OLDIFS=$IFS
+IFS=$'\n'
+
+yandexDir="/mnt/yandexdisk/torrents/rpi/Movies"
+watchDir="/mnt/torrentdisk/Downloads/MonitorFolder/Movies"
+files=( $(ls -1 $yandexDir) )
+
+IFS=$OLDIFS
+
+for file in "${files[@]}"; do
+	if [[ "$file" == *.torrent ]]; then
+		/bin/mv "$yandexDir/$file" "$watchDir";
+	fi
+done
+
+
+yandexDir="/mnt/yandexdisk/torrents/rpi/TVShows"
+watchDir="/mnt/torrentdisk/Downloads/MonitorFolder/TVShows"
+files=( $(ls $yandexDir) )
+
+for file in "${files[@]}"; do
+	if [[ "$file" == *.torrent ]]; then
+		/bin/mv "$yandexDir/$file" "$watchDir";
+	fi
+done
