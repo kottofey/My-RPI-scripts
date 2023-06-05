@@ -2,6 +2,9 @@
 
 ### https://www.cyberciti.biz/tips/handling-filenames-with-spaces-in-bash.html
 
+/bin/mountpoint -q /mnt/yandexdisk
+[[ $? -nq 0 ]] && /bin/mount /mnt/yandexdisk
+
 OLDIFS=$IFS
 IFS=$'\n'
 
@@ -12,9 +15,9 @@ files=( $(ls -1 $yandexDir) )
 IFS=$OLDIFS
 
 for file in "${files[@]}"; do
-	if [[ "$file" == *.torrent ]]; then
-		/bin/mv "$yandexDir/$file" "$watchDir";
-	fi
+        if [[ "$file" == *.torrent ]]; then
+                /bin/mv "$yandexDir/$file" "$watchDir";
+        fi
 done
 
 
@@ -23,7 +26,7 @@ watchDir="/mnt/torrentdisk/Downloads/MonitorFolder/TVShows"
 files=( $(ls $yandexDir) )
 
 for file in "${files[@]}"; do
-	if [[ "$file" == *.torrent ]]; then
-		/bin/mv "$yandexDir/$file" "$watchDir";
-	fi
+        if [[ "$file" == *.torrent ]]; then
+                /bin/mv "$yandexDir/$file" "$watchDir";
+        fi
 done
